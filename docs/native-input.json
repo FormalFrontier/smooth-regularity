@@ -1,0 +1,162 @@
+{
+  "analyzed_source_revision": "0c22cc0c557137465bc0927e301a4ee1fd7a34e0",
+  "analyzed_source_tree": "1a5d669f4c6db76343fade35ca2bc32ced31c55e",
+  "docgen_executable_sha256": "d3cc367b5ccd7ad4bc779d970d045b64c5cdcd26f3440ecea5921707e79e0180",
+  "docgen_revision": "97d4ecdfc8e09e7f511724c25e303d448de6a3db",
+  "format": 1,
+  "inputs": {
+    "SmoothRegularity.lean": "1d43813f11f342f2743797d8154add92ece13f7ec5f1ddefad55e1d9d4cce2e3",
+    "SmoothRegularity/AffineDedekind.lean": "39774f63bd534d46115545120fb52a2358b3f7f59f48104b4304e064ec6d36cd",
+    "SmoothRegularity/AlgClosed.lean": "ecbc2bfdc1274039c5bbbf3c5d4974342786fc8e85e7b99ad62f64bc6c8fc61d",
+    "SmoothRegularity/CenteredPresentation.lean": "ae611c92f519b2389db6e8be87dd1c01a19bc7a1d76024c43ca894204b81466e",
+    "SmoothRegularity/Conormal.lean": "84804d444064520a3785a94a827500ef6e9f21ea5799ed42b634372d6d0c30cf",
+    "SmoothRegularity/CotangentDimension.lean": "a9d4b797092d7743b3078d7f2ecf856099394b10bca7cd38eef21a40f61f2d07",
+    "SmoothRegularity/CotangentRelationTransport.lean": "c6a8927231ae8e722484719e555e9699b933d9c85b9d76803aed0c0b0f5459e7",
+    "SmoothRegularity/CotangentRelations.lean": "c37e35541536da1c831e6985a40641c1a3d08a90a79dfc92c6639713dc3625de",
+    "SmoothRegularity/Dedekind.lean": "f8ec85c9c2ead7d03818ebacc33b41cf5e83ca8fc81bd25dc1ea2d2412bd6342",
+    "SmoothRegularity/KrullDimension.lean": "30666ae45b134a705541b9a1c098e3bb3ab152480c2e9678a38d4bfdbae708de",
+    "SmoothRegularity/LocalizedCotangentComplex.lean": "a457dd11da35a51398f9a537b610ba9dea682b08739e16bed99c9593a1948b69",
+    "SmoothRegularity/QuotientRelationJacobian.lean": "ced492d409e8ea5bc22805a7b19b7170b25facc6320b7bacb8d4b32436691e7f",
+    "SmoothRegularity/RelationJacobian.lean": "865b7bf8220e487bccf57af7be7571946a1e40d71190691983e7c57892a0ef10",
+    "SmoothRegularity/SmoothAt.lean": "bb33da78f0e2f039830453f3e3fec4a315a3b24370f59b2304e8607148127e5f",
+    "SmoothRegularity/SmoothLocus.lean": "30ecb52d9544f65380c1887fa10e85ea54262939e1439695e27a4c85386877d6",
+    "SmoothRegularity/StandardSmooth.lean": "2cb9cea1e95de5ca9a9741577fec663167935b786ea19baffb283482312711bd",
+    "SmoothRegularityTest/PublicAPI.lean": "7a67b15657d0e548264e42b8d680f1aa83d3546d55dbf4bc0185c549341b5e63",
+    "lake-manifest.json": "d6234d83da36d3236adfee3b50de271bdb7cc8f347db34100287c682a2f1323a",
+    "lakefile.toml": "a7bb65fcb837e89204b75ac9dbff2f50816e3f70849ebc2113f86c836203b135",
+    "lean-toolchain": "8190e75a201741065fe508b28955dd64dd72d090babe5f70ce6848879d68ae88"
+  },
+  "modules": [
+    "SmoothRegularity.Conormal",
+    "SmoothRegularity.AlgClosed",
+    "SmoothRegularity.CenteredPresentation",
+    "SmoothRegularity.CotangentRelations",
+    "SmoothRegularity.CotangentDimension",
+    "SmoothRegularity.CotangentRelationTransport",
+    "SmoothRegularity.LocalizedCotangentComplex",
+    "SmoothRegularity.RelationJacobian",
+    "SmoothRegularity.QuotientRelationJacobian",
+    "SmoothRegularity.KrullDimension",
+    "SmoothRegularity.StandardSmooth",
+    "SmoothRegularity.SmoothAt",
+    "SmoothRegularity.SmoothLocus",
+    "SmoothRegularity.Dedekind",
+    "SmoothRegularity.AffineDedekind",
+    "SmoothRegularity",
+    "SmoothRegularityTest.PublicAPI"
+  ],
+  "native_generation_receipt_sha256": "be4174d5478bdccd6c4de9918d3411945240a3f3c23afedea34ed18e070fbf82",
+  "native_records": {
+    "SmoothRegularity": {
+      "entries": {},
+      "sha256": "f4ff24a57c6cc49e7408fe95bb59394db51a7d483d9b43689dfc30fa3c0771c4"
+    },
+    "SmoothRegularity.AffineDedekind": {
+      "entries": {
+        "AlgebraicGeometry.IsAffine.isDedekindDomain_globalSections_of_smooth": "theorem"
+      },
+      "sha256": "9ab910f79cbbbf486fb1ecd18f1496134371406f9b3ab71733b0ceb2cdfcb39b"
+    },
+    "SmoothRegularity.AlgClosed": {
+      "entries": {
+        "Ideal.cotangentSpaceEquivTensorKaehlerOfIsAlgClosed": "def",
+        "Ideal.finrank_cotangentSpace_eq_finrank_tensorKaehlerOfIsAlgClosed": "theorem",
+        "Ideal.residueFieldAlgEquivOfIsAlgClosed": "def"
+      },
+      "sha256": "104069b6788bcd566167bff7b124b03d5f4c75c331c900d445680e3d4a448343"
+    },
+    "SmoothRegularity.CenteredPresentation": {
+      "entries": {
+        "Ideal.comap_aeval_eq_idealOfVars_of_generators_mem": "theorem",
+        "Ideal.exists_generators_mem_of_isAlgClosed": "theorem",
+        "Ideal.exists_presentation_mem_of_isAlgClosed": "theorem"
+      },
+      "sha256": "73ecbb10ce8251f76d2175cf326520529d31e1c5e8cfdc0d6f5ee02040f00638"
+    },
+    "SmoothRegularity.Conormal": {
+      "entries": {
+        "IsLocalRing.cotangentSpaceEquivTensorKaehlerOfResidueEquiv": "def",
+        "IsLocalRing.cotangentSpaceEquivTensorKaehlerOfResidueEquiv_apply_toCotangent": "theorem",
+        "IsLocalRing.cotangentSpaceEquivTensorKaehlerOfSection": "def",
+        "IsLocalRing.cotangentSpaceEquivTensorKaehlerOfSection_apply_toCotangent": "theorem"
+      },
+      "sha256": "a4a522abef3803cbcea47f8e07fb63504fad78ab0b8a035e68c319f3bd28d54a"
+    },
+    "SmoothRegularity.CotangentDimension": {
+      "entries": {
+        "Algebra.Presentation.finrank_cotangentKernel_add_finrank_cotangentSpace": "theorem"
+      },
+      "sha256": "0a93a49b7e95cd8327fef231f72c61b4e9dd5d1e838a3acc552c9ad77aa64b56"
+    },
+    "SmoothRegularity.CotangentRelationTransport": {
+      "entries": {
+        "Algebra.Presentation.exists_relations_linearIndependent_localCotangent": "theorem"
+      },
+      "sha256": "963aa242ef5b0a3956643135f41dc346667a08bf537d3e85f4838bef8ee85657"
+    },
+    "SmoothRegularity.CotangentRelations": {
+      "entries": {
+        "Algebra.Presentation.exists_relations_spanning_cotangentKernel": "theorem"
+      },
+      "sha256": "50ae7fbc2edb20d46620692557aaba324dd780cb7a7af354ad6e27fe42720689"
+    },
+    "SmoothRegularity.Dedekind": {
+      "entries": {
+        "Algebra.Smooth.isDedekindDomain_of_dimensionLEOne": "theorem",
+        "Algebra.Smooth.isRegularRing": "theorem",
+        "IsRegularRing.isDedekindDomain_of_dimensionLEOne": "theorem"
+      },
+      "sha256": "9877c29f27eb0064b7bdc183e4ac2cb817a3fe1558a97e1ba466ce58f2b26cb7"
+    },
+    "SmoothRegularity.KrullDimension": {
+      "entries": {
+        "RingHom.bijective_of_surjective_of_ringKrullDim_le": "theorem"
+      },
+      "sha256": "818d9d33a513632354ef9cc7ec05d9b29cc53f0fb68399f5b84bc66f0ae86028"
+    },
+    "SmoothRegularity.LocalizedCotangentComplex": {
+      "entries": {
+        "Algebra.Presentation.exists_relations_linearIndependent_localizedCotangentComplex": "theorem",
+        "Algebra.Presentation.linearIndependent_localizedCotangentComplex_of_localCotangent": "theorem",
+        "Algebra.Presentation.localizedRelation": "def"
+      },
+      "sha256": "0637ad7915a11138646a112636489eaa374d4694fb622fa9d0ddbd91614d5e1b"
+    },
+    "SmoothRegularity.QuotientRelationJacobian": {
+      "entries": {
+        "Algebra.Extension.formallySmooth_of_quotient_span_dimension_of_linearIndependent": "theorem"
+      },
+      "sha256": "e817614062e7990fc742c858aca5489891d9d900bbf75a26daed5fb7f8d89d63"
+    },
+    "SmoothRegularity.RelationJacobian": {
+      "entries": {
+        "Algebra.Extension.formallySmooth_of_span_eq_ker_of_linearIndependent": "theorem"
+      },
+      "sha256": "c61fca8e28a1daabd6bb2526f2ef1dc6613a6b2a9cebf43a8a5f66a2e72a0ed2"
+    },
+    "SmoothRegularity.SmoothAt": {
+      "entries": {
+        "Algebra.IsSmoothAt.isRegularLocalRing": "theorem"
+      },
+      "sha256": "eb29ec0b1cc1988c9a7ac6adaf7c03454a145c3e08089d9e8c2bb0a8049217cc"
+    },
+    "SmoothRegularity.SmoothLocus": {
+      "entries": {
+        "AlgebraicGeometry.Scheme.Hom.isRegularLocalRing_of_mem_smoothLocus": "theorem"
+      },
+      "sha256": "ced49057678da5c93530adf6491a47bcdb79b6247606491ef6be3b4f8949add6"
+    },
+    "SmoothRegularity.StandardSmooth": {
+      "entries": {
+        "Algebra.IsStandardSmooth.isRegularLocalRing_atPrime": "theorem"
+      },
+      "sha256": "3fc61cb35ed2812949adc67010ab851cd585478ffaa72f7c1e13ab90b7238bbf"
+    },
+    "SmoothRegularityTest.PublicAPI": {
+      "entries": {},
+      "sha256": "c76a9be79abe8715ba2a6245c0954188ee1d920d9241807f6587b951d97442fb"
+    }
+  },
+  "proof_certification": false,
+  "release_acceptance": false
+}

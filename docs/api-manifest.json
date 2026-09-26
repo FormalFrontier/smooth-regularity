@@ -1,0 +1,234 @@
+{
+  "analyzed_source_revision": "0c22cc0c557137465bc0927e301a4ee1fd7a34e0",
+  "api_sha256": "08557846596881b31a7b8e1aca253ee4c5ac8bbd707bdb0cd72c7f5332fc1e39",
+  "display_entries": [
+    {
+      "end": 159,
+      "kind": "def",
+      "name": "IsLocalRing.cotangentSpaceEquivTensorKaehlerOfSection",
+      "path": "SmoothRegularity/Conormal.lean",
+      "start": 131
+    },
+    {
+      "end": 171,
+      "kind": "theorem",
+      "name": "IsLocalRing.cotangentSpaceEquivTensorKaehlerOfSection_apply_toCotangent",
+      "path": "SmoothRegularity/Conormal.lean",
+      "start": 161
+    },
+    {
+      "end": 197,
+      "kind": "def",
+      "name": "IsLocalRing.cotangentSpaceEquivTensorKaehlerOfResidueEquiv",
+      "path": "SmoothRegularity/Conormal.lean",
+      "start": 185
+    },
+    {
+      "end": 206,
+      "kind": "theorem",
+      "name": "IsLocalRing.cotangentSpaceEquivTensorKaehlerOfResidueEquiv_apply_toCotangent",
+      "path": "SmoothRegularity/Conormal.lean",
+      "start": 199
+    },
+    {
+      "end": 46,
+      "kind": "def",
+      "name": "Ideal.residueFieldAlgEquivOfIsAlgClosed",
+      "path": "SmoothRegularity/AlgClosed.lean",
+      "start": 37
+    },
+    {
+      "end": 62,
+      "kind": "def",
+      "name": "Ideal.cotangentSpaceEquivTensorKaehlerOfIsAlgClosed",
+      "path": "SmoothRegularity/AlgClosed.lean",
+      "start": 48
+    },
+    {
+      "end": 71,
+      "kind": "theorem",
+      "name": "Ideal.finrank_cotangentSpace_eq_finrank_tensorKaehlerOfIsAlgClosed",
+      "path": "SmoothRegularity/AlgClosed.lean",
+      "start": 64
+    },
+    {
+      "end": 64,
+      "kind": "theorem",
+      "name": "Ideal.exists_generators_mem_of_isAlgClosed",
+      "path": "SmoothRegularity/CenteredPresentation.lean",
+      "start": 35
+    },
+    {
+      "end": 109,
+      "kind": "theorem",
+      "name": "Ideal.comap_aeval_eq_idealOfVars_of_generators_mem",
+      "path": "SmoothRegularity/CenteredPresentation.lean",
+      "start": 67
+    },
+    {
+      "end": 130,
+      "kind": "theorem",
+      "name": "Ideal.exists_presentation_mem_of_isAlgClosed",
+      "path": "SmoothRegularity/CenteredPresentation.lean",
+      "start": 111
+    },
+    {
+      "end": 119,
+      "kind": "theorem",
+      "name": "Algebra.Presentation.exists_relations_spanning_cotangentKernel",
+      "path": "SmoothRegularity/CotangentRelations.lean",
+      "start": 35
+    },
+    {
+      "end": 67,
+      "kind": "theorem",
+      "name": "Algebra.Presentation.finrank_cotangentKernel_add_finrank_cotangentSpace",
+      "path": "SmoothRegularity/CotangentDimension.lean",
+      "start": 35
+    },
+    {
+      "end": 194,
+      "kind": "theorem",
+      "name": "Algebra.Presentation.exists_relations_linearIndependent_localCotangent",
+      "path": "SmoothRegularity/CotangentRelationTransport.lean",
+      "start": 44
+    },
+    {
+      "end": 71,
+      "kind": "def",
+      "name": "Algebra.Presentation.localizedRelation",
+      "path": "SmoothRegularity/LocalizedCotangentComplex.lean",
+      "start": 34
+    },
+    {
+      "end": 328,
+      "kind": "theorem",
+      "name": "Algebra.Presentation.linearIndependent_localizedCotangentComplex_of_localCotangent",
+      "path": "SmoothRegularity/LocalizedCotangentComplex.lean",
+      "start": 90
+    },
+    {
+      "end": 355,
+      "kind": "theorem",
+      "name": "Algebra.Presentation.exists_relations_linearIndependent_localizedCotangentComplex",
+      "path": "SmoothRegularity/LocalizedCotangentComplex.lean",
+      "start": 330
+    },
+    {
+      "end": 70,
+      "kind": "theorem",
+      "name": "Algebra.Extension.formallySmooth_of_span_eq_ker_of_linearIndependent",
+      "path": "SmoothRegularity/RelationJacobian.lean",
+      "start": 30
+    },
+    {
+      "end": 75,
+      "kind": "theorem",
+      "name": "Algebra.Extension.formallySmooth_of_quotient_span_dimension_of_linearIndependent",
+      "path": "SmoothRegularity/QuotientRelationJacobian.lean",
+      "start": 32
+    },
+    {
+      "end": 51,
+      "kind": "theorem",
+      "name": "RingHom.bijective_of_surjective_of_ringKrullDim_le",
+      "path": "SmoothRegularity/KrullDimension.lean",
+      "start": 23
+    },
+    {
+      "end": 451,
+      "kind": "theorem",
+      "name": "Algebra.IsStandardSmooth.isRegularLocalRing_atPrime",
+      "path": "SmoothRegularity/StandardSmooth.lean",
+      "start": 444
+    },
+    {
+      "end": 54,
+      "kind": "theorem",
+      "name": "Algebra.IsSmoothAt.isRegularLocalRing",
+      "path": "SmoothRegularity/SmoothAt.lean",
+      "start": 24
+    },
+    {
+      "end": 51,
+      "kind": "theorem",
+      "name": "AlgebraicGeometry.Scheme.Hom.isRegularLocalRing_of_mem_smoothLocus",
+      "path": "SmoothRegularity/SmoothLocus.lean",
+      "start": 26
+    },
+    {
+      "end": 33,
+      "kind": "theorem",
+      "name": "Algebra.Smooth.isRegularRing",
+      "path": "SmoothRegularity/Dedekind.lean",
+      "start": 25
+    },
+    {
+      "end": 68,
+      "kind": "theorem",
+      "name": "IsRegularRing.isDedekindDomain_of_dimensionLEOne",
+      "path": "SmoothRegularity/Dedekind.lean",
+      "start": 39
+    },
+    {
+      "end": 81,
+      "kind": "theorem",
+      "name": "Algebra.Smooth.isDedekindDomain_of_dimensionLEOne",
+      "path": "SmoothRegularity/Dedekind.lean",
+      "start": 74
+    },
+    {
+      "end": 52,
+      "kind": "theorem",
+      "name": "AlgebraicGeometry.IsAffine.isDedekindDomain_globalSections_of_smooth",
+      "path": "SmoothRegularity/AffineDedekind.lean",
+      "start": 27
+    }
+  ],
+  "docgen_revision": "97d4ecdfc8e09e7f511724c25e303d448de6a3db",
+  "format": 1,
+  "inputs": {
+    "SmoothRegularity.lean": "1d43813f11f342f2743797d8154add92ece13f7ec5f1ddefad55e1d9d4cce2e3",
+    "SmoothRegularity/AffineDedekind.lean": "39774f63bd534d46115545120fb52a2358b3f7f59f48104b4304e064ec6d36cd",
+    "SmoothRegularity/AlgClosed.lean": "ecbc2bfdc1274039c5bbbf3c5d4974342786fc8e85e7b99ad62f64bc6c8fc61d",
+    "SmoothRegularity/CenteredPresentation.lean": "ae611c92f519b2389db6e8be87dd1c01a19bc7a1d76024c43ca894204b81466e",
+    "SmoothRegularity/Conormal.lean": "84804d444064520a3785a94a827500ef6e9f21ea5799ed42b634372d6d0c30cf",
+    "SmoothRegularity/CotangentDimension.lean": "a9d4b797092d7743b3078d7f2ecf856099394b10bca7cd38eef21a40f61f2d07",
+    "SmoothRegularity/CotangentRelationTransport.lean": "c6a8927231ae8e722484719e555e9699b933d9c85b9d76803aed0c0b0f5459e7",
+    "SmoothRegularity/CotangentRelations.lean": "c37e35541536da1c831e6985a40641c1a3d08a90a79dfc92c6639713dc3625de",
+    "SmoothRegularity/Dedekind.lean": "f8ec85c9c2ead7d03818ebacc33b41cf5e83ca8fc81bd25dc1ea2d2412bd6342",
+    "SmoothRegularity/KrullDimension.lean": "30666ae45b134a705541b9a1c098e3bb3ab152480c2e9678a38d4bfdbae708de",
+    "SmoothRegularity/LocalizedCotangentComplex.lean": "a457dd11da35a51398f9a537b610ba9dea682b08739e16bed99c9593a1948b69",
+    "SmoothRegularity/QuotientRelationJacobian.lean": "ced492d409e8ea5bc22805a7b19b7170b25facc6320b7bacb8d4b32436691e7f",
+    "SmoothRegularity/RelationJacobian.lean": "865b7bf8220e487bccf57af7be7571946a1e40d71190691983e7c57892a0ef10",
+    "SmoothRegularity/SmoothAt.lean": "bb33da78f0e2f039830453f3e3fec4a315a3b24370f59b2304e8607148127e5f",
+    "SmoothRegularity/SmoothLocus.lean": "30ecb52d9544f65380c1887fa10e85ea54262939e1439695e27a4c85386877d6",
+    "SmoothRegularity/StandardSmooth.lean": "2cb9cea1e95de5ca9a9741577fec663167935b786ea19baffb283482312711bd",
+    "SmoothRegularityTest/PublicAPI.lean": "7a67b15657d0e548264e42b8d680f1aa83d3546d55dbf4bc0185c549341b5e63",
+    "lake-manifest.json": "d6234d83da36d3236adfee3b50de271bdb7cc8f347db34100287c682a2f1323a",
+    "lakefile.toml": "a7bb65fcb837e89204b75ac9dbff2f50816e3f70849ebc2113f86c836203b135",
+    "lean-toolchain": "8190e75a201741065fe508b28955dd64dd72d090babe5f70ce6848879d68ae88"
+  },
+  "modules": [
+    "SmoothRegularity.Conormal",
+    "SmoothRegularity.AlgClosed",
+    "SmoothRegularity.CenteredPresentation",
+    "SmoothRegularity.CotangentRelations",
+    "SmoothRegularity.CotangentDimension",
+    "SmoothRegularity.CotangentRelationTransport",
+    "SmoothRegularity.LocalizedCotangentComplex",
+    "SmoothRegularity.RelationJacobian",
+    "SmoothRegularity.QuotientRelationJacobian",
+    "SmoothRegularity.KrullDimension",
+    "SmoothRegularity.StandardSmooth",
+    "SmoothRegularity.SmoothAt",
+    "SmoothRegularity.SmoothLocus",
+    "SmoothRegularity.Dedekind",
+    "SmoothRegularity.AffineDedekind",
+    "SmoothRegularity",
+    "SmoothRegularityTest.PublicAPI"
+  ],
+  "native_input_sha256": "3f58f761952aea281d5d7910a81a1a63e780bccd7ecff44f6e42d10d702199e9",
+  "proof_certification": false,
+  "release_acceptance": false
+}
