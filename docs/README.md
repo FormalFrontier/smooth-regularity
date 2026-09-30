@@ -26,7 +26,7 @@ build-cost guidance and the conormal evaluation API migration.
 | `SmoothRegularityTest.PublicAPI` | 0 |
 
 All 26 display entries have native source docstrings; there is no missing-docstring
-exception. They join the separate accepted 148-entry raw declaration inventory:
+exception. The underlying 148-entry raw declaration inventory comprises
 26 displayed entries, 19 authored private helpers, 6 persistent private clients,
 95 generated private declarations and 2 generated public declarations.
 The two undisplayed public entries are
@@ -42,17 +42,21 @@ notation and import context. Native pretty-printing may elide proof terms as
 `⋯`; these are display signatures, not independently compilable declarations
 with bodies. Every entry links to its source lines in the same checkout.
 
-## Exact inputs and reproduction
+## Bound inputs and reproduction
 
-[native-input.json](native-input.json) binds analyzed source revision
-`0c22cc0c557137465bc0927e301a4ee1fd7a34e0`, its seventeen Lean files, toolchain and
-both Lake pin/configuration files. It records each raw native-record SHA256,
+[native-input.json](native-input.json) retains the original analyzed-source
+revision and binds its seventeen Lean files, toolchain and both Lake
+pin/configuration files. Those source and pin bytes match the
+[published release snapshot](https://github.com/FormalFrontier/smooth-regularity/tree/9766c97ed58e7782bd209414242a476034d6355d).
+The manifest records each raw native-record SHA256,
 the exact display name/kind inventory, executable and generation-receipt hashes,
 and doc-gen4 revision `97d4ecdfc8e09e7f511724c25e303d448de6a3db`.
 [api-manifest.json](api-manifest.json) binds the rendered Markdown and input
-manifest. These are content bindings, not signatures or attestations that a
-native command ran. Exact final artifact review and release acceptance remain
-separate from these generated records.
+manifest. These are original generation records, not claims of a new native
+generation for this release or signatures/attestations that a native command
+ran. Both manifests' `release_acceptance: false` and
+`proof_certification: false` describe what their original generation did not
+certify, not the later release's separate proof and publication evidence.
 
 To reproduce the Markdown from the retained native `fromDb` data directory:
 
@@ -76,9 +80,10 @@ Run `single` sequentially for all seventeen modules in the manifest's order:
 
 ```sh
 mkdir native-api rendered-api
+native_revision=$(python3 -c 'import json; print(json.load(open("docs/native-input.json"))["analyzed_source_revision"])')
 lake env /path/to/doc-gen4 single --build native-api \
   SmoothRegularity.Conormal api.db \
-  https://github.com/FormalFrontier/smooth-regularity/blob/0c22cc0c557137465bc0927e301a4ee1fd7a34e0/SmoothRegularity/Conormal.lean
+  "https://github.com/FormalFrontier/smooth-regularity/blob/${native_revision}/SmoothRegularity/Conormal.lean"
 # Repeat single for each remaining manifest module with its matching .lean path.
 lake env /path/to/doc-gen4 bibPrepass --build rendered-api --none
 lake env /path/to/doc-gen4 fromDb --build rendered-api \
@@ -86,11 +91,16 @@ lake env /path/to/doc-gen4 fromDb --build rendered-api \
 python3 scripts/generate_api.py --native-data rendered-api/doc-data --check
 ```
 
-These native source URLs are generation labels, not an assertion that the
-development commit exists on GitHub. Only relative source links are rendered.
-Fresh output can differ with the native environment; investigate any byte mismatch
-and review a new binding, never replace hashes merely to suppress it. Changed
-mathematical source or pins require new native generation and affected verification.
+The URL passed to `single` is the historical native source **label** required
+by the manifest and renderer, not a promise that its revision is obtainable on
+GitHub. Use the published snapshot linked above or the rendered API's relative
+links to browse the same source bytes. Replacing the label with the public
+release revision changes native records and fails the existing hash/source-label
+checks, even when Lean bytes agree. This example is **not** a new generation
+receipt. Fresh output
+can differ with the native environment; investigate any byte mismatch and review
+a new binding, never replace hashes merely to suppress it. Changed mathematical
+source or pins require new native generation and affected verification.
 The native loader executes initializers and uses `debug.skipKernelTC`; it is
 documentation machinery, not an independent kernel proof checker. Imported compiled
 dependencies remain a trust boundary even when project source and outputs are bound.
@@ -101,26 +111,28 @@ If the analyzed commit is present, the renderer checks its exact source/pin byte
 A present-object mismatch, a noncommit object or any Git command/repository error
 is fatal. Only an explicit `cat-file` missing-object response permits content
 continuity through the exact committed `native-input.json` and matching bytes.
-This supports parentless snapshots without importing development history.
+This supports parentless snapshots without importing development history. For
+the published snapshot, matched content does not change the original
+analyzed-source field in either machine-readable manifest.
 
 For an explicit source archive with no Git repository, add `--source-only`.
 It checks the same manifest and bytes, but cannot authenticate that manifest's
 commit. Invalid `.git` metadata or a different enclosing repository is not an
 archive. Both fallbacks establish content continuity only, not historical object
-existence or independent native-run provenance. Final review must bind the actual
-candidate and authenticate generation evidence separately; this file cannot
-contain its own final commit ID without circularity.
+existence or independent native-run provenance. A new candidate still needs
+appropriate independent evidence; a file cannot contain its own final commit ID
+without circularity.
 
 ## Provenance and licensing
 
-Lattice adapted the Python renderer and tests from accepted finite-etale-algebras
-revision `d0d6b47943a8dd8e7a42a76ebdc5adb53ce21409`, which extends Anchor's original
-Formal Frontier ideal-completion markup recipe. The original project work and
-later Smooth adaptation retain their distinct credit under Apache-2.0.
+Lattice adapted the Python renderer and tests from the Formal Frontier
+finite-étale-algebras renderer, which extends Anchor's original ideal-completion
+markup recipe. The original work and later Smooth adaptation retain distinct
+credit under Apache-2.0.
 
 Documentation text comes from this library's original docstrings, with display
 signatures produced by doc-gen4. The external tool and its contributors retain
 their own credit and terms. No tool implementation, fonts, CSS, JavaScript,
 external dependency documentation, source book, cache, native website or compiled
-binary is bundled in this production documentation. This provenance statement
-does not substitute for final independent rights review or release acceptance.
+binary is bundled in this documentation. These explanations and native display
+signatures do not substitute for checked Lean proofs or a transitive axiom audit.

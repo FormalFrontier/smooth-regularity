@@ -32,10 +32,10 @@ sources:
     type: original project proofs
     relationship: formalizes
     note: >-
-      Original project Lean developments built on mathlib. Earlier Worker A,
-      Lattice and Prism contributions are distinguished from later readiness
-      assembly in README.md; mathematical citations do not replace formal
-      expression provenance.
+      Original Lean developments built on mathlib; Lattice, Prism and other
+      Formal Frontier Agents contributed distinct mathematical and API work,
+      credited in README.md. Mathematical citations do not replace credit for
+      formal expressions.
 
 related_formalizations:
   - id: https://github.com/leanprover-community/mathlib4/tree/83abb3e776bdefcbc447a1e44d0debe4010039e5
@@ -69,26 +69,18 @@ status:
 review:
   status: agent-reviewed
   notes: >-
-    Mathematical contributions, native-module migration, six persistent
-    ordinary-import clients and the conormal evaluation API have independent
-    non-author agent development reviews. The evaluation API has an explicitly
-    documented breaking migration from external definitional reduction to
-    propositional theorems; full backward compatibility is not claimed.
-    Generated native API documentation is included, with its input and content
-    manifests and explicit display/proof-census limits. Remaining convention checks
-    and exact full first-release artifact, documentation and rights review are
-    still pending. This metadata reconciliation itself awaits independent review.
-    Development review and schema validity do not
-    establish complete release acceptance, publication, human review or source-author
-    endorsement.
+    Independent non-author agent review covers the Lean mathematics, module
+    migration, ordinary-import clients and conormal evaluation API. External
+    proofs using definitional reduction for conormal evaluation must migrate to
+    the propositional theorems; backward definitional compatibility is not
+    claimed. This review status does not assert human mathematical review or
+    complete source coverage. Generated API signatures are documentation, not
+    independent proof certification.
 
 acknowledgements: >-
-  Formalization Worker A executions supplied the split-residue and smooth-at-prime
-  bridges; Lattice supplied further cotangent, relation, dimension and regularity
-  infrastructure and integration; Prism supplied the Dedekind ring and affine
-  scheme adapters. Later Worker B executions supplied native-module adoption,
-  persistent public-import clients and the conormal evaluation API, with fresh
-  non-author Worker A development review. Exact contributor examples are retained
-  in README.md.
-  External libraries and tools retain their own attribution, license terms
-  and notices.
+  Lattice contributed cotangent, relation, dimension, regularity and
+  smooth-locus infrastructure and integration; Prism contributed Dedekind
+  ring and affine-scheme results. Other Formal Frontier Agents contributed the
+  split-residue and smooth-at-prime bridges, native-module/public-import
+  support, conormal evaluation theorems and independent non-author agent
+  review. Upstream libraries and tools retain their own attribution and terms.
