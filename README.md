@@ -45,6 +45,30 @@ Authors: Formal Frontier Agents.
 See the [26-entry API reference](docs/API.md) for signatures and module docstrings,
 and [the documentation guide](docs/README.md) for its coverage and provenance.
 
+## Using the library
+
+Add the library to your `lakefile.toml`:
+
+```toml
+[[require]]
+name = "smooth-regularity"
+git = "https://github.com/FormalFrontier/smooth-regularity.git"
+rev = "main"
+```
+
+GitHub `main` contains reviewed releases. Lake resolves the dependency when you
+first add it or explicitly update it; your `lake-manifest.json` keeps that
+resolution until another update. For a fixed reproducible version, replace
+`main` with the full commit of a published release. Dependencies from another
+Formal Frontier library or the incubator use the GitHub URL and full published
+release commit, not moving `main`, development commits or PR heads.
+
+Import the full library with:
+
+```lean
+import SmoothRegularity
+```
+
 ## Building and use
 
 The project pins Lean `v4.34.0-rc2` and mathlib commit
@@ -76,15 +100,14 @@ A build alone is not an all-declaration axiom audit or mathematical review.
 
 ### Lint scope and known convention departures
 
-The existing reviewed lint evidence retains 45 header-parser warnings across
-the fifteen implementation modules: truthful SPDX/agent-author notices do not
-match mathlib's copyright-line template. One `privateModule` warning concerns
-the six intentionally private persistent clients. These are documented,
-accepted convention departures, not warning-free passes; no copyright owner
-or dummy public test declaration is invented to suppress them. Five earlier
-proof-style warnings were repaired. No root `lake check-lint` driver is configured.
-After a successful pinned cache fetch and build, the supported direct-file
-checks are:
+The direct-file checks enable header linting. The implementation's SPDX and
+agent-author notices do not match mathlib's copyright-line template, and the
+six persistent root-import clients are intentionally private. Header and
+`privateModule` warnings can therefore reflect these convention limitations;
+the commands do not promise warning-free output. No copyright holder or dummy
+public test declaration is invented to suppress a warning. No root
+`lake check-lint` driver is configured. After a successful pinned cache fetch
+and build, the supported direct-file checks are:
 
 ```sh
 for source in SmoothRegularity.lean SmoothRegularity/*.lean SmoothRegularityTest/*.lean; do
@@ -93,7 +116,7 @@ for source in SmoothRegularity.lean SmoothRegularity/*.lean SmoothRegularityTest
 done
 ```
 
-These instructions and historical dispositions do not claim a new lint run.
+These instructions do not claim a new lint run.
 
 ### Conormal evaluation migration
 
@@ -110,28 +133,6 @@ that previously used `rfl` for this evaluation must migrate to these theorems:
 reduction through the private implementation is **not** promised under an
 ordinary import. The old ordinary-import `rfl` proof is known to fail after the
 module migration. This is a breaking migration, not definitional compatibility.
-
-### Expected build cost
-
-For the 17-module source set, a 2026-09-26 agent-container run used the pinned
-environment and one Lean worker (`LEAN_NUM_THREADS=1`). Its successful matching
-cache step took about 86 seconds. A focused `StandardSmooth` build then took
-6 seconds, followed by 32 seconds for the remaining default build: about 124
-seconds for those sequential commands, excluding checkout and gaps between
-commands. The default-build figure is **not** a standalone cold-build
-measurement: the focused module was already compiled. A subsequent explicit
-public-client target check took 2 seconds with those outputs already present.
-These are examples, not guarantees for other machines or networks; an uncached
-mathlib source build was neither required nor measured.
-
-The focused/default commands' start/end container-memory samples were about
-11.8 GiB, including the entire worker and resident caches: **not** an isolated
-compiler peak or a demonstrated minimum. The run used a 15 GiB memory bound;
-allow comparable headroom as a planning estimate, adjusting for machine, cache
-state and concurrent work. Timings use whole-second timestamps. Separate proof
-audits and native documentation generation have different workloads and are not
-included in this example; these figures say nothing about extracted executable
-performance.
 
 ## Scope and limitations
 

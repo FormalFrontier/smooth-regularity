@@ -16,6 +16,14 @@ open scoped TensorProduct
 
 universe u v
 
+namespace MvPolynomial
+
+/-- The polynomial ring in two variables over `ℚ` is regular, by smoothness over `ℚ`. -/
+public theorem isRegularRing_fin_two_rat : IsRegularRing (MvPolynomial (Fin 2) ℚ) :=
+  Algebra.Smooth.isRegularRing (K := ℚ) (S := MvPolynomial (Fin 2) ℚ)
+
+end MvPolynomial
+
 private theorem regular_of_smooth
     {K : Type u} {S : Type v} [Field K] [CommRing S] [Algebra K S]
     [Algebra.Smooth K S] : IsRegularRing S :=
