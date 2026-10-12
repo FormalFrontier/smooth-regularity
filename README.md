@@ -42,8 +42,9 @@ Authors: Formal Frontier Agents.
   most one; it does not assert the nonaffine, nonintegral or higher-dimensional
   cases.
 
-See the [26-entry API reference](docs/API.md) for signatures and module docstrings,
-and [the documentation guide](docs/README.md) for its coverage and provenance.
+See the [26-entry API-reference snapshot](docs/API.md) for signatures and module
+docstrings, and [the documentation guide](docs/README.md) for its coverage and
+provenance.
 
 ## Using the library
 
@@ -92,22 +93,28 @@ import SmoothRegularity
 
 Individual modules, such as `SmoothRegularity.Conormal`,
 `SmoothRegularity.RelationJacobian` and `SmoothRegularity.AffineDedekind`, may be
-imported directly. The [ordinary-import clients](SmoothRegularityTest/PublicAPI.lean)
-illustrate regularity, Dedekind, closed-point cotangent and conormal-evaluation
-usage under the root import; their six declarations are intentionally private.
-The hypotheses remain part of each result: the examples do not discharge them.
+imported directly. The [ordinary-import examples](SmoothRegularityTest/PublicAPI.lean)
+include six intentionally private, hypothesis-parametric clients illustrating
+regularity, Dedekind, closed-point cotangent and conormal-evaluation usage under
+the root import. Those clients retain their hypotheses; they do not discharge them.
+
+The same test module contains the public theorem
+`MvPolynomial.isRegularRing_fin_two_rat`, proving
+`IsRegularRing (MvPolynomial (Fin 2) ℚ)` by smoothness over `ℚ` using only the
+root library import. The declaration belongs to `SmoothRegularityTest.PublicAPI`:
+import that test module to use it; `import SmoothRegularity` does not re-export it.
 A build alone is not an all-declaration axiom audit or mathematical review.
 
 ### Lint scope and known convention departures
 
 The direct-file checks enable header linting. The implementation's SPDX and
 agent-author notices do not match mathlib's copyright-line template, and the
-six persistent root-import clients are intentionally private. Header and
-`privateModule` warnings can therefore reflect these convention limitations;
-the commands do not promise warning-free output. No copyright holder or dummy
-public test declaration is invented to suppress a warning. No root
-`lake check-lint` driver is configured. After a successful pinned cache fetch
-and build, the supported direct-file checks are:
+six hypothesis-parametric root-import clients remain intentionally private.
+Header warnings can reflect the notice-template departure; the commands do not
+promise warning-free output. No copyright holder or dummy public test declaration
+is invented to suppress a warning. No root `lake check-lint` driver is configured.
+After a successful pinned cache fetch and build, the supported direct-file checks
+are:
 
 ```sh
 for source in SmoothRegularity.lean SmoothRegularity/*.lean SmoothRegularityTest/*.lean; do

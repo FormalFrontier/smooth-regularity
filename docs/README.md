@@ -1,9 +1,14 @@
 # API documentation
 
-[API.md](API.md) is a generated, searchable Markdown reference for the native
-doc-gen4 display entries in all seventeen shipped Lean modules. See the root
-[mathematical overview and ordinary-import examples](../README.md) for scope,
-build-cost guidance and the conormal evaluation API migration.
+[API.md](API.md) is a generated, searchable Markdown reference for an older bound
+[published source snapshot](#bound-inputs-and-reproduction), not a census of the
+current library. Its seventeen-module inventory has 26 native doc-gen4 display
+entries and 148 raw declarations, with no display entries for
+`SmoothRegularityTest.PublicAPI`. The concrete theorem
+`MvPolynomial.isRegularRing_fin_two_rat` in that test module is outside this snapshot.
+
+The root [README](../README.md) covers headline results, installation, build and
+lint checks, ordinary-import examples and the conormal evaluation API migration.
 
 | Module | Native display entries |
 | --- | ---: |
@@ -25,15 +30,15 @@ build-cost guidance and the conormal evaluation API migration.
 | `SmoothRegularity` | 0 |
 | `SmoothRegularityTest.PublicAPI` | 0 |
 
-All 26 display entries have native source docstrings; there is no missing-docstring
-exception. The underlying 148-entry raw declaration inventory comprises
-26 displayed entries, 19 authored private helpers, 6 persistent private clients,
+In this snapshot, all 26 display entries have native source docstrings; there is
+no missing-docstring exception. The underlying 148-entry raw declaration inventory
+comprises 26 displayed entries, 19 authored private helpers, 6 persistent private clients,
 95 generated private declarations and 2 generated public declarations.
 The two undisplayed public entries are
 `Ideal.residueFieldAlgEquivOfIsAlgClosed.congr_simp` and
 `LinearMap.extendScalarsOfSurjective.congr_simp`. They are generated simp support,
-not missing authored API documentation. The root aggregate and private-client
-module have no native display entries. These docs are not a complete
+not missing authored API documentation. The root aggregate and test module have
+no native display entries in this snapshot. These docs are not a complete
 public/private/generated proof census, and generation is not a proof audit.
 
 The renderer retains implicit binders, including typeclass hypotheses, while
@@ -46,7 +51,7 @@ with bodies. Every entry links to its source lines in the same checkout.
 
 [native-input.json](native-input.json) retains the original analyzed-source
 revision and binds its seventeen Lean files, toolchain and both Lake
-pin/configuration files. Those source and pin bytes match the
+pin/configuration files. The bound snapshot's source and pin bytes match the
 [published release snapshot](https://github.com/FormalFrontier/smooth-regularity/tree/9766c97ed58e7782bd209414242a476034d6355d).
 The manifest records each raw native-record SHA256,
 the exact display name/kind inventory, executable and generation-receipt hashes,
