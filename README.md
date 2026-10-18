@@ -42,9 +42,16 @@ Authors: Formal Frontier Agents.
   most one; it does not assert the nonaffine, nonintegral or higher-dimensional
   cases.
 
-See the [26-entry API-reference snapshot](docs/API.md) for signatures and module
-docstrings, and [the documentation guide](docs/README.md) for its coverage and
-provenance.
+The [Artinian criteria](SmoothRegularity/Artinian.lean) state that a commutative
+Artinian local ring is regular if and only if it is a field, and that a
+commutative Artinian ring is regular if and only if it is reduced, including
+the zero ring. The proofs use the dimension-zero and localization criteria
+from Mathlib. See the [signature and boundary guide](docs/Artinian.md).
+
+See the [26-entry generated API-reference snapshot](docs/API.md) for signatures
+and module docstrings in its older bound input inventory, and
+[the documentation guide](docs/README.md) for its coverage and provenance.
+The Artinian signatures are documented separately.
 
 ## Using the library
 
@@ -103,6 +110,14 @@ The same test module contains the public theorem
 `IsRegularRing (MvPolynomial (Fin 2) ℚ)` by smoothness over `ℚ` using only the
 root library import. The declaration belongs to `SmoothRegularityTest.PublicAPI`:
 import that test module to use it; `import SmoothRegularity` does not re-export it.
+
+The [Artinian clients](SmoothRegularityTest/Artinian.lean), also included in the
+default test target, establish Artinianity and reducedness or nonreducedness
+for fields, finite products of fields, `ZMod 4` and the zero ring using Mathlib.
+Their regularity conclusions use the two Artinian equivalences. The public
+zero-ring theorem `PUnit.isRegularRing_and_not_isField` belongs to
+`SmoothRegularityTest.Artinian`; the root library import does not re-export it.
+
 A build alone is not an all-declaration axiom audit or mathematical review.
 
 ### Lint scope and known convention departures

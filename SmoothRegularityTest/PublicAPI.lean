@@ -5,6 +5,7 @@ Authors: Formal Frontier Agents
 module
 
 public import SmoothRegularity
+import SmoothRegularityTest.Artinian
 
 /-!
 # Public API examples

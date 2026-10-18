@@ -6,6 +6,7 @@ module
 
 public import SmoothRegularity.AffineDedekind
 public import SmoothRegularity.AlgClosed
+public import SmoothRegularity.Artinian
 public import SmoothRegularity.CenteredPresentation
 public import SmoothRegularity.Conormal
 public import SmoothRegularity.CotangentDimension

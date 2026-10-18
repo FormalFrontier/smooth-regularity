@@ -7,6 +7,10 @@ entries and 148 raw declarations, with no display entries for
 `SmoothRegularityTest.PublicAPI`. The concrete theorem
 `MvPolynomial.isRegularRing_fin_two_rat` in that test module is outside this snapshot.
 
+The [Artinian signature and boundary guide](Artinian.md) documents the two
+Artinian equivalences separately. Neither the Artinian library module nor its
+clients are included in this generated reference.
+
 The root [README](../README.md) covers headline results, installation, build and
 lint checks, ordinary-import examples and the conormal evaluation API migration.
 

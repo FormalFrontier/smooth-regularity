@@ -18,4 +18,4 @@ name = "SmoothRegularity"
 
 [[lean_lib]]
 name = "SmoothRegularityTest"
-roots = ["SmoothRegularityTest.PublicAPI"]
+roots = ["SmoothRegularityTest.PublicAPI", "SmoothRegularityTest.Artinian"]
