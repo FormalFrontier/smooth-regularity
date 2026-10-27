@@ -120,7 +120,7 @@ variable {R : Type u} {B : Type v} [CommRing R] [CommRing B] [Algebra R B]
 
 private lemma Extension.cotangent_finrank_eq_of_formallySmooth
     [FormallySmooth R P.Ring] [FormallySmooth R B]
-    [IsNoetherianRing P.Ring] [IsNoetherianRing B]
+    [IsNoetherianRing P.Ring]
     (b : Basis σ B P.Cotangent) :
     Nat.card σ + Module.finrank (ResidueField B) (IsLocalRing.CotangentSpace B) =
       Module.finrank (ResidueField P.Ring) (IsLocalRing.CotangentSpace P.Ring) := by

@@ -1,5 +1,6 @@
 name = "smooth-regularity"
 version = "0.1.0"
+lintDriver = "batteries/runLinter"
 defaultTargets = ["SmoothRegularity", "SmoothRegularityTest"]
 
 [leanOptions]

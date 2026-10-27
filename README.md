@@ -8,14 +8,23 @@ Authors: Formal Frontier Agents.
 
 ## Headline results
 
-- **Cotangent spaces and differentials.** For a local algebra over a field,
-  [the cotangent-space equivalence](SmoothRegularity/Conormal.lean#L131) identifies
-  the cotangent space with the residue-field base change of Kähler differentials
-  when the residue map admits an algebra section and the residue field is formally
-  unramified over the base. A [residue-field equivalence](SmoothRegularity/Conormal.lean#L185)
-  supplies a special case. At a maximal ideal of a finite-type algebra over an
-  algebraically closed field, [the closed-point comparison](SmoothRegularity/AlgClosed.lean#L48)
-  applies. Neither the section nor the field hypotheses are automatic.
+- **First-order conormal maps.** For an arbitrary extension `P → S` of
+  commutative algebras over a commutative ring `K`, a `K`-algebra section of
+  `P/I² → S` makes [the canonical conormal map](SmoothRegularity/Conormal.lean)
+  `I/I² → S ⊗[P] Ω[P⁄K]` injective. If `S` is formally étale over `K`, this
+  map is an equivalence. Neither result assumes smoothness of `P` or a section
+  into `P`. The equivalence's forward map is Mathlib's `cotangentComplex`,
+  with an evaluation law on every kernel class.
+- **Cotangent spaces and differentials.** For a local algebra over a
+  commutative ring, [the residue-field equivalence](SmoothRegularity/Conormal.lean)
+  identifies its cotangent space with the residue-field base change of Kähler
+  differentials when the residue field is formally étale over the base; no
+  residue section is needed. It agrees with the split-residue construction
+  when a section is supplied. The latter requires only formal unramifiedness
+  of the residue field, and also applies to a supplied residue-field algebra
+  equivalence with the base. At a maximal ideal of a finite-type algebra over
+  an algebraically closed field, [the closed-point comparison](SmoothRegularity/AlgClosed.lean#L48)
+  applies. Formal étaleness of the residue extension is not automatic.
 - **Presentation relations and local Jacobian criteria.** A finite presentation
   admits a [linearly independent selection](SmoothRegularity/CotangentRelations.lean#L35)
   of relations spanning its residue-field cotangent kernel at any prime over a
@@ -48,10 +57,11 @@ commutative Artinian ring is regular if and only if it is reduced, including
 the zero ring. The proofs use the dimension-zero and localization criteria
 from Mathlib. See the [signature and boundary guide](docs/Artinian.md).
 
-See the [26-entry generated API-reference snapshot](docs/API.md) for signatures
-and module docstrings in its older bound input inventory, and
-[the documentation guide](docs/README.md) for its coverage and provenance.
-The Artinian signatures are documented separately.
+See the [generated API reference](docs/API.md) for all fourteen Conormal
+signatures with their commutative-ring hypotheses, independent universes and
+canonical-map laws, alongside 22 older native display entries for other modules.
+The [documentation guide](docs/README.md) distinguishes the source-header and
+native input bindings. The Artinian signatures are documented separately.
 
 ## Using the library
 
@@ -101,9 +111,13 @@ import SmoothRegularity
 Individual modules, such as `SmoothRegularity.Conormal`,
 `SmoothRegularity.RelationJacobian` and `SmoothRegularity.AffineDedekind`, may be
 imported directly. The [ordinary-import examples](SmoothRegularityTest/PublicAPI.lean)
-include six intentionally private, hypothesis-parametric clients illustrating
-regularity, Dedekind, closed-point cotangent and conormal-evaluation usage under
-the root import. Those clients retain their hypotheses; they do not discharge them.
+include private hypothesis-parametric clients illustrating regularity, Dedekind,
+closed-point cotangent and conormal-evaluation usage under the root import.
+The polynomial and dual-number augmentations over any nontrivial commutative
+ring also give named proofs of the conormal image formulas `1 ⊗ dX` and
+`1 ⊗ dε` and of their nonvanishing. These use coefficient one and the
+square-zero coordinate, respectively, to detect nonzero classes modulo the
+kernel square. The dual-number example does not assume a smooth extension ring.
 
 The same test module contains the public theorem
 `MvPolynomial.isRegularRing_fin_two_rat`, proving
@@ -120,25 +134,21 @@ zero-ring theorem `PUnit.isRegularRing_and_not_isField` belongs to
 
 A build alone is not an all-declaration axiom audit or mathematical review.
 
-### Lint scope and known convention departures
+### Linting
 
-The direct-file checks enable header linting. The implementation's SPDX and
-agent-author notices do not match mathlib's copyright-line template, and the
-six hypothesis-parametric root-import clients remain intentionally private.
-Header warnings can reflect the notice-template departure; the commands do not
-promise warning-free output. No copyright holder or dummy public test declaration
-is invented to suppress a warning. No root `lake check-lint` driver is configured.
-After a successful pinned cache fetch and build, the supported direct-file checks
-are:
+The Lake configuration enables Mathlib's standard syntax linters, disables
+implicit auto-binding, and uses the Batteries environment-linter driver.
+The header-template linter is disabled because the source files use SPDX and
+agent-author notices rather than an invented copyright holder. After building,
+run the environment linters with:
 
 ```sh
-for source in SmoothRegularity.lean SmoothRegularity/*.lean SmoothRegularityTest/*.lean; do
-  lake env lean -Dlinter.mathlibStandardSet=true -Dlinter.style.header=true \
-    -Dlinter.style.docString=true "$source" || exit
-done
+lake lint
 ```
 
-These instructions do not claim a new lint run.
+The CI lint step is required. The private mathematical clients belong to the
+separate test library; the non-test library has the ordinary environment-lint
+scope.
 
 ### Conormal evaluation migration
 

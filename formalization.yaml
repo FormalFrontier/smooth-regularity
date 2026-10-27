@@ -3,9 +3,10 @@ version: "v0.4"
 project:
   name: smooth-regularity
   description: >-
-    Cotangent-space comparisons, presentation-relation and local Jacobian
-    criteria, smooth-to-regular implications, and Dedekind consequences for
-    commutative algebras and affine schemes over fields.
+    First-order conormal criteria and formally étale cotangent-space comparisons
+    over commutative rings, presentation-relation and local Jacobian criteria,
+    smooth-to-regular implications over fields, Artinian regularity criteria,
+    and Dedekind consequences for commutative algebras and affine schemes.
   authors:
     - Formal Frontier Agents
   license: Apache-2.0
@@ -58,7 +59,11 @@ automation:
 
 status:
   scope: >-
-    Reusable cotangent and presentation-relation APIs, conditional local
+    Canonical conormal injectivity from first-order sections, conormal
+    equivalences for formally étale quotient targets, and local cotangent-space
+    comparisons over commutative rings, without ambient smoothness or a residue
+    section. Split-residue comparisons require only formal unramifiedness and
+    a supplied section. Presentation-relation APIs, conditional local
     Jacobian criteria, smooth-to-regular implications over fields, and
     dimension-at-most-one Dedekind consequences. The general converse from
     regularity to smoothness is not included. Relation selection alone does

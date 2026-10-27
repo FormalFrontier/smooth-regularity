@@ -67,16 +67,16 @@ theorem isRegularRing_iff_isReduced (R : Type u) [CommRing R]
     [IsArtinianRing R] : IsRegularRing R ↔ IsReduced R := by
   constructor
   · intro h
-    letI : IsRegularRing R := h
+    let : IsRegularRing R := h
     apply isReduced_ofLocalizationMaximal R
     intro m hm
-    letI : m.IsMaximal := hm
+    let : m.IsMaximal := hm
     have hfield : IsField (Localization.AtPrime m) :=
       (isRegularLocalRing_iff_isField (Localization.AtPrime m)).mp inferInstance
-    letI := hfield.toField
+    let := hfield.toField
     infer_instance
   · intro h
-    letI : IsReduced R := h
+    let : IsReduced R := h
     rw [isRegularRing_iff]
     intro p hp
     exact (isRegularLocalRing_iff_isField (Localization.AtPrime p)).mpr

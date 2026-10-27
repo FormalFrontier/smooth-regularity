@@ -1,64 +1,289 @@
 # Generated API reference
 
-Native doc-gen4 display entries from all seventeen shipped Lean modules.
-Import `SmoothRegularity` for the library API; `SmoothRegularityTest.PublicAPI`
-contains checked private clients. Private helpers and some generated
-declarations are not displayed by doc-gen4; this is not a full proof census.
+Conormal entries below are generated from the current source declaration headers
+and docstrings, retaining namespace, universe and shared-variable context.
+The remaining 22 entries are historical native doc-gen4 display signatures,
+not a census of the current library. See [generation and scope](README.md)
+and the [content manifest](api-manifest.json) for their distinct input bindings.
+Neither source-text extraction nor documentation generation is a proof audit.
 
-Signatures retain all implicit binders, but are native display signatures,
-not complete source declarations with bodies. Short names and universe
-variables have the source module's namespace/import context. Source links
-refer to the same checkout. See [generation and scope](README.md) and
-[content manifest](api-manifest.json).
+Import `SmoothRegularity` for the library API. Private helpers, model proofs
+and generated declarations are outside this display reference.
 
 ## SmoothRegularity.Conormal
+
+### Algebra.Extension.cotangentComplex_injective_of_infinitesimalSection
+
+```lean
+namespace Algebra.Extension
+universe u v w
+variable {K : Type u} {S : Type v} [CommRing K] [CommRing S] [Algebra K S]
+theorem cotangentComplex_injective_of_infinitesimalSection (P : Extension.{w} K S)
+    (s : S →ₐ[K] P.infinitesimal.Ring)
+    (hs : Function.LeftInverse (algebraMap P.infinitesimal.Ring S) s) :
+    Function.Injective P.cotangentComplex
+end Algebra.Extension
+```
+
+A section of the first-order quotient `P/I² → S` makes the canonical
+conormal map injective. No section into `P` is required.
+
+[Source](../SmoothRegularity/Conormal.lean#L92).
+
+### Algebra.Extension.cotangentEquivCotangentSpaceOfFormallyEtale
+
+```lean
+namespace Algebra.Extension
+universe u v w
+variable {K : Type u} {S : Type v} [CommRing K] [CommRing S] [Algebra K S]
+@[expose] noncomputable def cotangentEquivCotangentSpaceOfFormallyEtale
+    (P : Extension.{w} K S) [Algebra.FormallyEtale K S] :
+    P.Cotangent ≃ₗ[S] P.CotangentSpace
+end Algebra.Extension
+```
+
+The canonical conormal equivalence of an extension with formally étale
+target over the base. Its forward map is `P.cotangentComplex`.
+
+[Source](../SmoothRegularity/Conormal.lean#L100).
+
+### Algebra.Extension.cotangentComplex_bijective_of_formallyEtale
+
+```lean
+namespace Algebra.Extension
+universe u v w
+variable {K : Type u} {S : Type v} [CommRing K] [CommRing S] [Algebra K S]
+theorem cotangentComplex_bijective_of_formallyEtale (P : Extension.{w} K S)
+    [Algebra.FormallyEtale K S] : Function.Bijective P.cotangentComplex
+end Algebra.Extension
+```
+
+If the target of an extension is formally étale over the base, its
+canonical conormal map is bijective. The extension ring need not be smooth.
+
+[Source](../SmoothRegularity/Conormal.lean#L123).
+
+### Algebra.Extension.cotangentEquivCotangentSpaceOfFormallyEtale_toLinearMap
+
+```lean
+namespace Algebra.Extension
+universe u v w
+variable {K : Type u} {S : Type v} [CommRing K] [CommRing S] [Algebra K S]
+theorem cotangentEquivCotangentSpaceOfFormallyEtale_toLinearMap
+    (P : Extension.{w} K S) [Algebra.FormallyEtale K S] :
+    (cotangentEquivCotangentSpaceOfFormallyEtale P).toLinearMap =
+      P.cotangentComplex
+end Algebra.Extension
+```
+
+The conormal equivalence has the existing cotangent-complex map as its
+underlying linear map.
+
+[Source](../SmoothRegularity/Conormal.lean#L129).
+
+### Algebra.Extension.cotangentEquivCotangentSpaceOfFormallyEtale_apply_mk
+
+```lean
+namespace Algebra.Extension
+universe u v w
+variable {K : Type u} {S : Type v} [CommRing K] [CommRing S] [Algebra K S]
+@[simp] theorem cotangentEquivCotangentSpaceOfFormallyEtale_apply_mk
+    (P : Extension.{w} K S) [Algebra.FormallyEtale K S] (x : P.ker) :
+    cotangentEquivCotangentSpaceOfFormallyEtale P (Cotangent.mk x) =
+      1 ⊗ₜ[P.Ring] KaehlerDifferential.D K P.Ring x.1
+end Algebra.Extension
+```
+
+A kernel class is sent to its differential in the target base change.
+
+[Source](../SmoothRegularity/Conormal.lean#L137).
 
 ### IsLocalRing.cotangentSpaceEquivTensorKaehlerOfSection
 
 ```lean
-noncomputable def IsLocalRing.cotangentSpaceEquivTensorKaehlerOfSection {K : Type u} {R : Type v} [Field K] [CommRing R] [IsLocalRing R] [Algebra K R] [Algebra.FormallyUnramified K (ResidueField R)] (s : ResidueField R →ₐ[K] R) (hs : Function.LeftInverse ⇑(algebraMap R (ResidueField R)) ⇑s) : CotangentSpace R ≃ₗ[ResidueField R] TensorProduct R (ResidueField R) Ω[R⁄K]
+namespace IsLocalRing
+universe u v
+variable {K : Type u} {R : Type v} [CommRing K] [CommRing R] [IsLocalRing R]
+  [Algebra K R]
+noncomputable def cotangentSpaceEquivTensorKaehlerOfSection
+    [Algebra.FormallyUnramified K (ResidueField R)]
+    (s : ResidueField R →ₐ[K] R)
+    (hs : Function.LeftInverse (algebraMap R (ResidueField R)) s) :
+    LinearEquiv (RingHom.id (ResidueField R)) (CotangentSpace R)
+      (ResidueField R ⊗[R] Ω[R⁄K])
+end IsLocalRing
 ```
 
 If the residue map of a local `K`-algebra has a `K`-algebra section and the
 residue field is formally unramified over `K`, its cotangent space is the base
 change of its module of Kähler differentials to the residue field.
 
-[Source](../SmoothRegularity/Conormal.lean#L131-L159).
+[Source](../SmoothRegularity/Conormal.lean#L255).
 
 ### IsLocalRing.cotangentSpaceEquivTensorKaehlerOfSection_apply_toCotangent
 
 ```lean
-theorem IsLocalRing.cotangentSpaceEquivTensorKaehlerOfSection_apply_toCotangent {K : Type u} {R : Type v} [Field K] [CommRing R] [IsLocalRing R] [Algebra K R] [Algebra.FormallyUnramified K (ResidueField R)] (s : ResidueField R →ₐ[K] R) (hs : Function.LeftInverse ⇑(algebraMap R (ResidueField R)) ⇑s) (x : ↥(maximalIdeal R)) : (cotangentSpaceEquivTensorKaehlerOfSection s hs) ((maximalIdeal R).toCotangent x) = 1 ⊗ₜ[R] (KaehlerDifferential.D K R) ↑x
+namespace IsLocalRing
+universe u v
+variable {K : Type u} {R : Type v} [CommRing K] [CommRing R] [IsLocalRing R]
+  [Algebra K R]
+theorem cotangentSpaceEquivTensorKaehlerOfSection_apply_toCotangent
+    [Algebra.FormallyUnramified K (ResidueField R)]
+    (s : ResidueField R →ₐ[K] R)
+    (hs : Function.LeftInverse (algebraMap R (ResidueField R)) s)
+    (x : maximalIdeal R) :
+    cotangentSpaceEquivTensorKaehlerOfSection s hs
+        ((maximalIdeal R).toCotangent x) =
+      1 ⊗ₜ[R] KaehlerDifferential.D K R x.1
+end IsLocalRing
 ```
 
 The split-residue cotangent equivalence sends a class in the maximal ideal to
 the corresponding differential in the residue-field base change.
 
-[Source](../SmoothRegularity/Conormal.lean#L161-L171).
+[Source](../SmoothRegularity/Conormal.lean#L285).
 
 ### IsLocalRing.cotangentSpaceEquivTensorKaehlerOfResidueEquiv
 
 ```lean
-noncomputable def IsLocalRing.cotangentSpaceEquivTensorKaehlerOfResidueEquiv {K : Type u} {R : Type v} [Field K] [CommRing R] [IsLocalRing R] [Algebra K R] (e : ResidueField R ≃ₐ[K] K) : CotangentSpace R ≃ₗ[ResidueField R] TensorProduct R (ResidueField R) Ω[R⁄K]
+namespace IsLocalRing
+universe u v
+variable {K : Type u} {R : Type v} [CommRing K] [CommRing R] [IsLocalRing R]
+  [Algebra K R]
+noncomputable def cotangentSpaceEquivTensorKaehlerOfResidueEquiv
+    (e : ResidueField R ≃ₐ[K] K) :
+    LinearEquiv (RingHom.id (ResidueField R)) (CotangentSpace R)
+      (ResidueField R ⊗[R] Ω[R⁄K])
+end IsLocalRing
 ```
 
 If a local `K`-algebra has residue field isomorphic to `K` as a `K`-algebra,
 its cotangent space is the base change of its module of Kähler differentials to
 the residue field.
 
-[Source](../SmoothRegularity/Conormal.lean#L185-L197).
+[Source](../SmoothRegularity/Conormal.lean#L309).
 
 ### IsLocalRing.cotangentSpaceEquivTensorKaehlerOfResidueEquiv_apply_toCotangent
 
 ```lean
-theorem IsLocalRing.cotangentSpaceEquivTensorKaehlerOfResidueEquiv_apply_toCotangent {K : Type u} {R : Type v} [Field K] [CommRing R] [IsLocalRing R] [Algebra K R] (e : ResidueField R ≃ₐ[K] K) (x : ↥(maximalIdeal R)) : (cotangentSpaceEquivTensorKaehlerOfResidueEquiv e) ((maximalIdeal R).toCotangent x) = 1 ⊗ₜ[R] (KaehlerDifferential.D K R) ↑x
+namespace IsLocalRing
+universe u v
+variable {K : Type u} {R : Type v} [CommRing K] [CommRing R] [IsLocalRing R]
+  [Algebra K R]
+theorem cotangentSpaceEquivTensorKaehlerOfResidueEquiv_apply_toCotangent
+    (e : ResidueField R ≃ₐ[K] K) (x : maximalIdeal R) :
+    cotangentSpaceEquivTensorKaehlerOfResidueEquiv e
+        ((maximalIdeal R).toCotangent x) =
+      1 ⊗ₜ[R] KaehlerDifferential.D K R x.1
+end IsLocalRing
 ```
 
 The cotangent equivalence induced by a residue-field equivalence sends a
 class in the maximal ideal to its differential in the base change.
 
-[Source](../SmoothRegularity/Conormal.lean#L199-L206).
+[Source](../SmoothRegularity/Conormal.lean#L323).
 
+### IsLocalRing.cotangentSpaceEquivTensorKaehlerOfFormallyEtale
+
+```lean
+namespace IsLocalRing
+universe u v
+variable {K : Type u} {R : Type v} [CommRing K] [CommRing R] [IsLocalRing R]
+  [Algebra K R]
+@[expose] noncomputable def cotangentSpaceEquivTensorKaehlerOfFormallyEtale
+    [Algebra.FormallyEtale K (ResidueField R)] :
+    CotangentSpace R ≃ₗ[ResidueField R] (ResidueField R ⊗[R] Ω[R⁄K])
+end IsLocalRing
+```
+
+If the residue field of a local algebra is formally étale over the
+commutative base, the canonical conormal map is a residue-field linear
+equivalence. A residue section into the local ring is not required.
+
+[Source](../SmoothRegularity/Conormal.lean#L332).
+
+### IsLocalRing.cotangentSpaceEquivTensorKaehlerOfFormallyEtale_restrictScalars
+
+```lean
+namespace IsLocalRing
+universe u v
+variable {K : Type u} {R : Type v} [CommRing K] [CommRing R] [IsLocalRing R]
+  [Algebra K R]
+theorem cotangentSpaceEquivTensorKaehlerOfFormallyEtale_restrictScalars
+    [Algebra.FormallyEtale K (ResidueField R)] :
+    (cotangentSpaceEquivTensorKaehlerOfFormallyEtale
+      (K := K) (R := R)).toLinearMap.restrictScalars R =
+      KaehlerDifferential.kerCotangentToTensor K R (ResidueField R) ∘ₗ
+        (Ideal.Cotangent.equivOfEq
+          (RingHom.ker (algebraMap R (ResidueField R))) (maximalIdeal R)
+          (by rw [ResidueField.algebraMap_eq, ker_residue])).symm.toLinearMap
+end IsLocalRing
+```
+
+After identifying the kernel of the residue map with the maximal ideal,
+the forward map is Mathlib's canonical conormal map.
+
+[Source](../SmoothRegularity/Conormal.lean#L349).
+
+### IsLocalRing.cotangentSpaceEquivTensorKaehlerOfFormallyEtale_apply_toCotangent
+
+```lean
+namespace IsLocalRing
+universe u v
+variable {K : Type u} {R : Type v} [CommRing K] [CommRing R] [IsLocalRing R]
+  [Algebra K R]
+@[simp] theorem cotangentSpaceEquivTensorKaehlerOfFormallyEtale_apply_toCotangent
+    [Algebra.FormallyEtale K (ResidueField R)] (x : maximalIdeal R) :
+    cotangentSpaceEquivTensorKaehlerOfFormallyEtale (K := K)
+        ((maximalIdeal R).toCotangent x) =
+      1 ⊗ₜ[R] KaehlerDifferential.D K R x.1
+end IsLocalRing
+```
+
+The residue-field equivalence sends a maximal-ideal class to its
+differential in the residue-field base change.
+
+[Source](../SmoothRegularity/Conormal.lean#L361).
+
+### IsLocalRing.cotangentSpaceEquivTensorKaehlerOfFormallyEtale_eq_ofSection
+
+```lean
+namespace IsLocalRing
+universe u v
+variable {K : Type u} {R : Type v} [CommRing K] [CommRing R] [IsLocalRing R]
+  [Algebra K R]
+theorem cotangentSpaceEquivTensorKaehlerOfFormallyEtale_eq_ofSection
+    [Algebra.FormallyEtale K (ResidueField R)]
+    (s : ResidueField R →ₐ[K] R)
+    (hs : Function.LeftInverse (algebraMap R (ResidueField R)) s) :
+    cotangentSpaceEquivTensorKaehlerOfFormallyEtale (K := K) (R := R) =
+      cotangentSpaceEquivTensorKaehlerOfSection s hs
+end IsLocalRing
+```
+
+When a residue section into the local ring is also supplied, the
+formally étale and split-residue equivalences agree.
+
+[Source](../SmoothRegularity/Conormal.lean#L370).
+
+### IsLocalRing.cotangentSpaceEquivTensorKaehlerOfFormallyEtale_eq_ofResidueEquiv
+
+```lean
+namespace IsLocalRing
+universe u v
+variable {K : Type u} {R : Type v} [CommRing K] [CommRing R] [IsLocalRing R]
+  [Algebra K R]
+theorem cotangentSpaceEquivTensorKaehlerOfFormallyEtale_eq_ofResidueEquiv
+    [Algebra.FormallyEtale K (ResidueField R)] (e : ResidueField R ≃ₐ[K] K) :
+    cotangentSpaceEquivTensorKaehlerOfFormallyEtale (K := K) (R := R) =
+      cotangentSpaceEquivTensorKaehlerOfResidueEquiv e
+end IsLocalRing
+```
+
+Under the shared formally étale hypothesis, the canonical residue-field
+equivalence agrees with the one induced by a residue-field equivalence.
+
+[Source](../SmoothRegularity/Conormal.lean#L383).
 ## SmoothRegularity.AlgClosed
 
 ### Ideal.residueFieldAlgEquivOfIsAlgClosed
