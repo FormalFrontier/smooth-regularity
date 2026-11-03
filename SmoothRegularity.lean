@@ -4,6 +4,8 @@ Authors: Formal Frontier Agents
 -/
 module
 
+public import SmoothRegularity.Algebra.PointDerivation
+
 public import SmoothRegularity.AffineDedekind
 public import SmoothRegularity.AlgClosed
 public import SmoothRegularity.Artinian

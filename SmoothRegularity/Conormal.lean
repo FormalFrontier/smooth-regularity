@@ -6,10 +6,10 @@ module
 
 public import Mathlib.RingTheory.Etale.Basic
 public import Mathlib.RingTheory.Extension.ExtendScalars
-public import Mathlib.RingTheory.Ideal.Cotangent
 public import Mathlib.RingTheory.Kaehler.Basic
 public import Mathlib.RingTheory.Smooth.Kaehler
 public import Mathlib.RingTheory.Unramified.Basic
+public import SmoothRegularity.Algebra.CotangentDerivation
 
 /-!
 # Conormal modules and formally étale quotients
@@ -152,69 +152,31 @@ section
 variable {K : Type u} {R : Type v} [CommRing K] [CommRing R] [IsLocalRing R]
   [Algebra K R]
 
-private noncomputable def residueDifference
-    (s : ResidueField R →ₐ[K] R)
-    (hs : Function.LeftInverse (algebraMap R (ResidueField R)) s) (r : R) :
-    maximalIdeal R :=
-  ⟨r - s (residue R r), by
-    rw [← residue_eq_zero_iff]
-    simp only [map_sub, sub_eq_zero]
-    rw [← ResidueField.algebraMap_eq]
-    exact (hs _).symm⟩
-
-private lemma residueDifference_add
-    (s : ResidueField R →ₐ[K] R)
-    (hs : Function.LeftInverse (algebraMap R (ResidueField R)) s) (x y : R) :
-    residueDifference s hs (x + y) = residueDifference s hs x + residueDifference s hs y := by
-  ext
-  simp only [residueDifference, map_add, Submodule.coe_mk, Submodule.coe_add]
-  ring
-
-private lemma residueDifference_smul
-    (s : ResidueField R →ₐ[K] R)
-    (hs : Function.LeftInverse (algebraMap R (ResidueField R)) s) (k : K) (x : R) :
-    residueDifference s hs (k • x) = k • residueDifference s hs x := by
-  rw [← IsScalarTower.algebraMap_smul R k x,
-    ← IsScalarTower.algebraMap_smul R k (residueDifference s hs x)]
-  apply Subtype.ext
-  dsimp only [residueDifference]
-  change (algebraMap K R) k * x - s (residue R ((algebraMap K R) k * x)) =
-    (algebraMap K R) k * (x - s (residue R x))
-  have hk : residue R ((algebraMap K R) k) = algebraMap K (ResidueField R) k := by
-    rw [← ResidueField.algebraMap_eq,
-      ← IsScalarTower.algebraMap_apply K R (ResidueField R)]
-  rw [map_mul, hk, map_mul, s.commutes]
-  ring
-
+/-- The split-residue derivation is the split-map cotangent derivation,
+transported along the canonical identification of its kernel with the maximal ideal. -/
 private noncomputable def splitResidueDerivation
     (s : ResidueField R →ₐ[K] R)
     (hs : Function.LeftInverse (algebraMap R (ResidueField R)) s) :
-    Derivation K R (CotangentSpace R) where
-  toLinearMap :=
-    { toFun := fun r ↦ (maximalIdeal R).toCotangent (residueDifference s hs r)
-      map_add' := fun x y ↦ by rw [residueDifference_add, map_add]
-      map_smul' := fun k x ↦ by
-        rw [residueDifference_smul]
-        exact (maximalIdeal R).toCotangent.map_smul_of_tower k _ }
-  map_one_eq_zero' := by
-    change (maximalIdeal R).toCotangent (residueDifference s hs 1) = 0
-    rw [show residueDifference s hs 1 = 0 by ext; simp [residueDifference], map_zero]
-  leibniz' := fun x y ↦ by
-    change (maximalIdeal R).toCotangent (residueDifference s hs (x * y)) =
-      (maximalIdeal R).toCotangent (x • residueDifference s hs y) +
-        (maximalIdeal R).toCotangent (y • residueDifference s hs x)
-    rw [← map_add, ← sub_eq_zero, ← map_sub, Ideal.toCotangent_eq_zero]
-    have hprod : -((residueDifference s hs x : R) * residueDifference s hs y) ∈
-        maximalIdeal R ^ 2 := by
-      apply (maximalIdeal R ^ 2).neg_mem
-      rw [pow_two]
-      exact Ideal.mul_mem_mul (residueDifference s hs x).2 (residueDifference s hs y).2
-    convert hprod using 1
-    change x * y - s (residue R (x * y)) -
-        (x * (y - s (residue R y)) + y * (x - s (residue R x))) =
-      -((x - s (residue R x)) * (y - s (residue R y)))
-    simp only [map_mul]
-    ring
+    Derivation K R (CotangentSpace R) :=
+  (Ideal.Cotangent.equivOfEq
+    (RingHom.ker (IsScalarTower.toAlgHom K R (ResidueField R) : R →+* ResidueField R))
+    (maximalIdeal R) (by
+      change RingHom.ker (algebraMap R (ResidueField R)) = maximalIdeal R
+      rw [ResidueField.algebraMap_eq, ker_residue])).toLinearMap.compDer
+        ((IsScalarTower.toAlgHom K R (ResidueField R)).cotangentDerivationOfSection s hs)
+
+private lemma splitResidueDerivation_apply_coe
+    (s : ResidueField R →ₐ[K] R)
+    (hs : Function.LeftInverse (algebraMap R (ResidueField R)) s)
+    (hker : RingHom.ker (algebraMap R (ResidueField R)) = maximalIdeal R)
+    (x : RingHom.ker (algebraMap R (ResidueField R))) :
+    splitResidueDerivation s hs x = Ideal.Cotangent.equivOfEq _ _ hker
+      ((RingHom.ker (algebraMap R (ResidueField R))).toCotangent x) := by
+  change Ideal.Cotangent.equivOfEq _ _ hker
+      ((IsScalarTower.toAlgHom K R (ResidueField R)).cotangentDerivationOfSection s hs x) = _
+  exact congrArg (Ideal.Cotangent.equivOfEq _ _ hker)
+    (AlgHom.cotangentDerivationOfSection_apply_coe
+      (IsScalarTower.toAlgHom K R (ResidueField R)) s hs x)
 
 private noncomputable def splitResidueRetraction
     (s : ResidueField R →ₐ[K] R)
@@ -239,18 +201,7 @@ private lemma splitResidueRetraction_comp
   rw [splitResidueRetraction, show (1 ⊗ₜ[R] KaehlerDifferential.D K R x.1) =
       (TensorProduct.mk R (ResidueField R) Ω[R⁄K] 1) (KaehlerDifferential.D K R x.1) by rfl,
     IsBaseChange.lift_eq, Derivation.liftKaehlerDifferential_comp_D]
-  change (maximalIdeal R).toCotangent (residueDifference s hs x.1) =
-    Ideal.Cotangent.equivOfEq _ _ hker
-      ((RingHom.ker (algebraMap R (ResidueField R))).toCotangent x)
-  rw [Ideal.Cotangent.equivOfEq_toCotangent]
-  apply (maximalIdeal R).toCotangent.congr_arg
-  ext
-  simp only [residueDifference]
-  have hx : residue R x.1 = 0 := by
-    rw [← ResidueField.algebraMap_eq]
-    exact RingHom.mem_ker.mp x.2
-  rw [hx, map_zero, sub_zero]
-  rfl
+  exact splitResidueDerivation_apply_coe s hs hker x
 
 /--
 If the residue map of a local `K`-algebra has a `K`-algebra section and the
