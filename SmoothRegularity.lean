@@ -4,7 +4,11 @@ Authors: Formal Frontier Agents
 -/
 module
 
+public import SmoothRegularity.Algebra.Cotangent
 public import SmoothRegularity.Algebra.Derivation
+public import SmoothRegularity.Algebra.FormallySmooth
+public import SmoothRegularity.Algebra.Ideal
+public import SmoothRegularity.Algebra.Localization
 public import SmoothRegularity.Algebra.PointDerivation
 
 public import SmoothRegularity.AffineDedekind
